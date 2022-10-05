@@ -32,6 +32,11 @@ public class PauseManager : MonoBehaviour
 		Time.timeScale = Time.timeScale == 0 ? 1 : 0;
 	}
 
+	public void Play()
+	{
+		SceneManager.LoadScene("Main");
+	}
+
 	public void MainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
