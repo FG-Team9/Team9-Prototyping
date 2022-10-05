@@ -10,7 +10,6 @@ public class SceneDirectorScript : MonoBehaviour
     // the player object from the Hierarchy tab
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject shooterPlayerObject;
-    [SerializeField] private Transform shootingStartPosition;
     [SerializeField] private GameObject meleePlayerObject;
     [SerializeField] private GameObject projectileObjectPrefab;
     [SerializeField] private CinemachineVirtualCamera shooterCam;
@@ -206,16 +205,9 @@ public class SceneDirectorScript : MonoBehaviour
 
     void PlayerFireProjectile()
     {
-       
-
-        float whereIWantToBeX = shootingStartPosition.position.x;
-        float whereIWantToBeY = shootingStartPosition.position.y;
-        float whereIWantToBeZ = shootingStartPosition.position.z;
-
-        GameObject projectile = Instantiate(projectileObjectPrefab, new Vector3(whereIWantToBeX, whereIWantToBeY, whereIWantToBeZ), playerObject.transform.rotation); 
+        GameObject projectile = Instantiate(projectileObjectPrefab, new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + .5f, playerObject.transform.position.z + 1), playerObject.transform.rotation);
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
         projectileRB.AddRelativeForce(new Vector3(0, 0, launchPower), ForceMode.Impulse);
-
     }
     
     private IEnumerator PlayerMeleeAttack(float speed)
