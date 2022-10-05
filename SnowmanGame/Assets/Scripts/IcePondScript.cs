@@ -7,7 +7,10 @@ public class IcePondScript : MonoBehaviour
 {
     [SerializeField] private GameObject playerObject;
     private Rigidbody playerRB;
-    
+    public float iceMass = .25f;
+    public float iceDrag = .1f;
+    public float iceAngularDrag = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +27,10 @@ public class IcePondScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerRB.mass = .25f;
-            playerRB.drag = 0.1f;
-            playerRB.angularDrag = 0f;
+            playerRB.mass = iceMass;
+            playerRB.drag = iceDrag;
+            playerRB.angularDrag = iceAngularDrag;
+            Debug.Log("Im on the ice");
         }
     }
 
@@ -34,8 +38,8 @@ public class IcePondScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerRB.mass = 1f;
-            playerRB.drag = 3f;
+            playerRB.mass = 10f;
+            playerRB.drag = 1f;
             playerRB.angularDrag = 3f;
         }
     }
