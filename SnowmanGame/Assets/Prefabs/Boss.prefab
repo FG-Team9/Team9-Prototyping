@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7606604965811388141}
   - component: {fileID: 7606604965811388112}
   - component: {fileID: 7606604965811388143}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: EnemyModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7606604966183819046}
   - component: {fileID: 7606604966183819045}
   - component: {fileID: 7606604966183819044}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,6 +238,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ef39ae7291c751249b296f00bf6fb042, type: 3}
       propertyPath: m_Name
       value: HitParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ef39ae7291c751249b296f00bf6fb042, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef39ae7291c751249b296f00bf6fb042, type: 3}
       propertyPath: m_RootOrder
