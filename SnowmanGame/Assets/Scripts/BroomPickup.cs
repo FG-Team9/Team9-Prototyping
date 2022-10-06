@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BroomPickup : MonoBehaviour
-{ 
+{
+    //[SerializeField] private AudioSource SM_broomPickup;
     public bool isMeleeMode = false; 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,6 +13,11 @@ public class BroomPickup : MonoBehaviour
             isMeleeMode = true;
             Destroy(gameObject);
             Debug.Log("melee");
+            
         }
+       // if (isMeleeMode == true)
+        //{
+         //   SM_broomPickup.Play();
+        //}
     }
 }
