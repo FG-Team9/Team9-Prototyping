@@ -10,7 +10,6 @@ using UnityEditor;
 
 public class PauseManager : MonoBehaviour 
 {
-	
 	Canvas canvas;
 	
 	void Start()
@@ -35,12 +34,13 @@ public class PauseManager : MonoBehaviour
 	public void Play()
 	{
 		SceneManager.LoadScene("Main");
+		Time.timeScale = 1;
 	}
-
+	
 	public void MainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
-		//Time.timeScale == 1;
+		Time.timeScale = 1;
 	}
 	
 	public void Quit()

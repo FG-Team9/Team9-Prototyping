@@ -2,6 +2,7 @@
 
 public class EnemyHealth : MonoBehaviour
 {
+    public GameObject DeathParticles;
     public int startingHealth = 100;
     public int scoreValue = 10;
     
@@ -41,7 +42,17 @@ public class EnemyHealth : MonoBehaviour
             Death ();
         }
     }
+    public void TakeBroomDamage (int amount)
+    {
+        if(isDead) return;
 
+        currentHealth -= amount;
+
+        if(currentHealth <= 0)
+        {
+            Death ();
+        }
+    }
 
     void Death ()
     {
@@ -51,9 +62,12 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <Rigidbody> ().isKinematic = true;
         
         capsuleCollider.isTrigger = true;
+        
+        //Instantiate(DeathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        //Destroy(DeathParticles, 1.0f);
 
         ScoreManager.score += scoreValue;
-        Destroy (gameObject, 2f);
+        Destroy (gameObject, 0f);
         Debug.Log("is dead now thanks");
     }
 }

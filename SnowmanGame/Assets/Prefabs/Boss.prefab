@@ -99,9 +99,10 @@ GameObject:
   - component: {fileID: 7606604966183819046}
   - component: {fileID: 7606604966183819045}
   - component: {fileID: 7606604966183819044}
+  - component: {fileID: -2783408271525365524}
   m_Layer: 7
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5497fedaf22a5b4459e6252d52f99946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathParticles: {fileID: 0}
   startingHealth: 300
   scoreValue: 50
 --- !u!114 &7606604966183819044
@@ -228,6 +230,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9f3e69fc2bab24aa1be42f22ef0a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2783408271525365524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606604966183819041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79e68cf60e380045834f716f0b16044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 7606604966183819045}
+  damagePerHit: 100
 --- !u!1001 &7378313897178660820
 PrefabInstance:
   m_ObjectHideFlags: 0

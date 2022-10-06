@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using EZCameraShake;
 
 public class SceneDirectorScript : MonoBehaviour
 {
@@ -45,7 +46,11 @@ public class SceneDirectorScript : MonoBehaviour
     public static bool meleeModeOn = false;
     public static bool iceModeOn = false;
     public static bool meleeAttack = false;
-    
+
+    // Tana's stuff
+    public BroomPickup broom;
+    public PlayerShooting playerShooting;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,13 +88,13 @@ public class SceneDirectorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (myGamepad.buttonEast.wasPressedThisFrame)
         {
             Application.Quit();
         }
 
-        if (myGamepad.buttonNorth.wasPressedThisFrame)
+        if (broom.isMeleeMode == true)
         {
             meleeModeOn = true;
         }
@@ -110,12 +115,16 @@ public class SceneDirectorScript : MonoBehaviour
             }
             
             ActivateCamera(meleeCam);
-        } else
+        } 
+        else
         {
+            
             if (myGamepad.rightTrigger.wasPressedThisFrame)
             {
-                PlayerFireProjectile();
+                playerShooting.Shoot();
+                //CameraShaker.Instance.ShakeOnce(.14f, .4f, .1f, .1f);
             }
+
         }
         // FORWARD & BACK
         if (myGamepad.leftStick.ReadValue().y > stickDampening ||
@@ -165,8 +174,8 @@ public class SceneDirectorScript : MonoBehaviour
         }
         else
         {
-            maxVelocity = 12f;
-            moveSpeed = 10f;
+            maxVelocity = 20f;
+            moveSpeed = 15f;
         }
         
         // rotation
@@ -186,7 +195,7 @@ public class SceneDirectorScript : MonoBehaviour
         playerRB.AddForce(playerMoveVector * moveSpeed * 10f, ForceMode.Force);
     }
 
-    private void PlayerMeleeMode()
+    public void PlayerMeleeMode()
     {
         if (!meleePlayerObject.activeInHierarchy)
         {
@@ -203,7 +212,7 @@ public class SceneDirectorScript : MonoBehaviour
             shooterPlayerObject.SetActive(true);
         }
     }
-
+/*
     void PlayerFireProjectile()
     {
        
@@ -211,13 +220,13 @@ public class SceneDirectorScript : MonoBehaviour
         float whereIWantToBeX = shootingStartPosition.position.x;
         float whereIWantToBeY = shootingStartPosition.position.y;
         float whereIWantToBeZ = shootingStartPosition.position.z;
-
+        
         GameObject projectile = Instantiate(projectileObjectPrefab, new Vector3(whereIWantToBeX, whereIWantToBeY, whereIWantToBeZ), playerObject.transform.rotation); 
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
         projectileRB.AddRelativeForce(new Vector3(0, 0, launchPower), ForceMode.Impulse);
 
     }
-    
+*/
     private IEnumerator PlayerMeleeAttack(float speed)
     {
         
@@ -238,5 +247,4 @@ public class SceneDirectorScript : MonoBehaviour
             activeCamera.Priority = 10;
         }
     }
-
 }
