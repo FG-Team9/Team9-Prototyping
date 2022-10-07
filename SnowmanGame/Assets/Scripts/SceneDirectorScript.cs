@@ -160,8 +160,8 @@ public class SceneDirectorScript : MonoBehaviour
     {
         if (iceModeOn == true)
         {
-            maxVelocity = 15f;
-            moveSpeed = 12;
+            maxVelocity = 10f;
+            moveSpeed = 5f;
         }
         else
         {
